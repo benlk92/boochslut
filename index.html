@@ -170,10 +170,6 @@
       margin: 0;
     }
 
-    .arrow {
-      width: min(260px, 70%);
-      margin-top: 18px;
-    }
 
     form { display: grid; gap: 16px; }
 
@@ -201,23 +197,6 @@
       outline-offset: 2px;
     }
 
-    .check {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      font-weight: 400;
-      grid-template-columns: none;
-    }
-
-    .check input {
-      width: 22px;
-      height: 22px;
-      margin: 2px 0 0;
-      accent-color: var(--ink);
-      flex: none;
-    }
-
-    .check small { display: block; color: var(--ink-soft); font-size: .9rem; margin-top: 2px; }
 
     button {
       justify-self: start;
@@ -244,30 +223,6 @@
       .signup { grid-template-columns: 1fr 1.4fr; padding: 48px; gap: 48px; }
     }
 
-    /* ---------- Footer ---------- */
-
-    footer {
-      border-top: 1px solid rgba(1, 28, 39, .35);
-      padding: 28px 0 48px;
-      display: grid;
-      gap: 20px;
-      font-size: .95rem;
-    }
-
-    footer h3 {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: 1rem;
-      letter-spacing: .06em;
-      margin: 0 0 4px;
-    }
-
-    footer p { margin: 0; }
-    footer a { color: inherit; }
-
-    @media (min-width: 640px) {
-      footer { grid-template-columns: 1fr 1fr 1fr; align-items: start; }
-    }
   </style>
 </head>
 <body>
@@ -295,10 +250,7 @@
 
     <section class="wrap">
       <div class="signup">
-        <div>
-          <h2>join for the latest booch drops</h2>
-          <img class="arrow" src="img/arrow.png" alt="">
-        </div>
+        <h2>join for the latest booch drops</h2>
 
         <form id="signup" novalidate>
           <div class="row">
@@ -312,12 +264,6 @@
           <label>Email
             <input type="email" name="email" autocomplete="email" inputmode="email" required>
           </label>
-          <label class="check">
-            <input type="checkbox" name="optIn" value="yes">
-            <span>Sign up for news and updates
-              <small>Actually check this, otherwise I’m not legally allowed to email you :(((((</small>
-            </span>
-          </label>
           <div class="hp" aria-hidden="true">
             <input type="text" name="website" tabindex="-1" autocomplete="off">
           </div>
@@ -328,17 +274,6 @@
     </section>
   </main>
 
-  <footer class="wrap">
-    <p class="wordmark" style="font-size:1.6rem">boochslut</p>
-    <div>
-      <h3>Location</h3>
-      <p>49 Twin Peaks Blvd<br>San Francisco, CA</p>
-    </div>
-    <div>
-      <h3>Contact</h3>
-      <p><a href="mailto:benj@boochslut.com">benj@boochslut.com</a></p>
-    </div>
-  </footer>
 
   <script>
     // Google Apps Script web app URL that stores signups in a Google Sheet.
@@ -364,7 +299,6 @@
           return;
         }
       }
-      data.optIn = form.elements.optIn.checked ? "yes" : "no";
 
       button.disabled = true;
       button.textContent = "Sending…";

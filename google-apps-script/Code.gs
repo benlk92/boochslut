@@ -8,7 +8,7 @@
  */
 
 const SIGNUPS_SHEET = 'Signups';
-const HEADERS = ['Timestamp', 'First name', 'Last name', 'Email', 'Opted in to emails'];
+const HEADERS = ['Timestamp', 'First name', 'Last name', 'Email'];
 
 function setup() {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -38,7 +38,7 @@ function doPost(e) {
     lock.waitLock(10000);
     try {
       SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SIGNUPS_SHEET)
-        .appendRow([new Date(), first, last, email, data.optIn === 'yes' ? 'yes' : 'no']);
+        .appendRow([new Date(), first, last, email]);
     } finally {
       lock.releaseLock();
     }
