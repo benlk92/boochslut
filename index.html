@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>boochslut</title>
+  <meta name="description" content="boochslut is small-batch kombucha, brewed on Twin Peaks with premium green and oolong tea.">
+  <meta property="og:title" content="boochslut · booch that gets around">
+  <meta property="og:description" content="Small-batch kombucha, brewed on Twin Peaks with premium green and oolong tea.">
+  <meta property="og:image" content="img/bottles.jpg">
+  <meta name="theme-color" content="#9da68e">
+  <link rel="icon" href="img/icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pontano+Sans:wght@400;600&family=Tenor+Sans&display=swap" rel="stylesheet">
+  <style>
+    /* The background is the actual label color. The page always uses it,
+       in light and dark mode, because it's the brand. */
+    :root {
+      --label: #9da68e;
+      --label-light: #b4bca5;
+      --ink: #011c27;
+      --ink-soft: #2c3e3f;
+      --vine: #1d5a1f;
+      --paper: #e9ecdf;
+      --error: #7a1212;
+      --serif: "Tenor Sans", "Optima", "Candara", sans-serif;
+      --sans: "Pontano Sans", "Helvetica Neue", Arial, sans-serif;
+      color-scheme: light;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--label);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 18px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; max-width: 100%; }
+
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+
+    /* ---------- Label hero ---------- */
+
+    .hero {
+      min-height: min(70vh, 760px);
+      display: grid;
+      place-items: center;
+      padding: 48px 0;
+    }
+
+    .label {
+      text-align: center;
+      padding: 40px 24px 36px;
+      border-top: 1.5px solid var(--ink);
+      border-bottom: 1.5px solid var(--ink);
+      position: relative;
+      width: min(100%, 820px);
+    }
+
+    /* Double rule, like the printed label */
+    .label::before, .label::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--ink);
+      opacity: .55;
+    }
+    .label::before { top: 6px; }
+    .label::after { bottom: 6px; }
+
+    .wordmark {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(3.4rem, 15vw, 8.5rem);
+      line-height: 1;
+      letter-spacing: -0.01em;
+      margin: 0;
+    }
+
+    .tagline {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      justify-content: center;
+      margin: 18px 0 0;
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(.95rem, 4.2vw, 1.6rem);
+      letter-spacing: .04em;
+      white-space: nowrap;
+    }
+
+    .tagline::before, .tagline::after {
+      content: "";
+      flex: 0 1 72px;
+      min-width: 16px;
+      height: 1px;
+      background: currentColor;
+      opacity: .6;
+    }
+
+    /* ---------- About ---------- */
+
+    .about {
+      display: grid;
+      gap: 32px;
+      align-items: center;
+      padding: 24px 0 72px;
+    }
+
+    .about-photo {
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 18px 40px rgba(1, 28, 39, .22);
+      max-width: 420px;
+      width: 100%;
+      justify-self: center;
+      aspect-ratio: 3 / 4;
+    }
+
+    .about-photo img { width: 100%; height: 100%; object-fit: cover; }
+
+    .about-copy p {
+      font-size: clamp(1.15rem, 2.6vw, 1.45rem);
+      line-height: 1.5;
+      margin: 0 0 .9em;
+      max-width: 26em;
+    }
+
+    .about-copy strong { font-weight: 600; }
+
+    .about-copy .kicker {
+      font-family: var(--serif);
+      font-size: clamp(1.5rem, 4vw, 2.1rem);
+      line-height: 1.25;
+      margin-top: 1.2em;
+      margin-bottom: 0;
+    }
+
+    @media (min-width: 800px) {
+      .hero { min-height: min(88vh, 760px); }
+      .about { grid-template-columns: 1fr 1.1fr; gap: 64px; padding: 40px 0 96px; }
+    }
+
+    /* ---------- Signup ---------- */
+
+    .signup {
+      background: var(--paper);
+      border-radius: 10px;
+      padding: 32px 20px;
+      margin-bottom: 64px;
+      display: grid;
+      gap: 24px;
+      box-shadow: 0 1px 0 rgba(1, 28, 39, .08);
+    }
+
+    .signup h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(2rem, 6vw, 3rem);
+      line-height: 1.1;
+      margin: 0;
+    }
+
+    .arrow {
+      width: min(260px, 70%);
+      margin-top: 18px;
+    }
+
+    form { display: grid; gap: 16px; }
+
+    .row { display: grid; gap: 16px; }
+
+    @media (min-width: 560px) {
+      .row { grid-template-columns: 1fr 1fr; }
+    }
+
+    label { display: grid; gap: 6px; font-size: .95rem; font-weight: 600; }
+
+    input[type=text], input[type=email] {
+      width: 100%;
+      min-height: 50px;
+      padding: 12px 16px;
+      border: 1.5px solid var(--ink);
+      border-radius: 999px;
+      background: transparent;
+      color: var(--ink);
+      font: 400 1rem var(--sans);
+    }
+
+    input:focus-visible, button:focus-visible {
+      outline: 3px solid var(--vine);
+      outline-offset: 2px;
+    }
+
+    .check {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-weight: 400;
+      grid-template-columns: none;
+    }
+
+    .check input {
+      width: 22px;
+      height: 22px;
+      margin: 2px 0 0;
+      accent-color: var(--ink);
+      flex: none;
+    }
+
+    .check small { display: block; color: var(--ink-soft); font-size: .9rem; margin-top: 2px; }
+
+    button {
+      justify-self: start;
+      min-height: 52px;
+      padding: 12px 36px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--ink);
+      color: var(--paper);
+      font: 600 1rem var(--sans);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    button[disabled] { opacity: .6; cursor: progress; }
+
+    .status { margin: 0; font-weight: 600; min-height: 1.6em; }
+    .status.error { color: var(--error); }
+
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+    @media (min-width: 800px) {
+      .signup { grid-template-columns: 1fr 1.4fr; padding: 48px; gap: 48px; }
+    }
+
+    /* ---------- Footer ---------- */
+
+    footer {
+      border-top: 1px solid rgba(1, 28, 39, .35);
+      padding: 28px 0 48px;
+      display: grid;
+      gap: 20px;
+      font-size: .95rem;
+    }
+
+    footer h3 {
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 1rem;
+      letter-spacing: .06em;
+      margin: 0 0 4px;
+    }
+
+    footer p { margin: 0; }
+    footer a { color: inherit; }
+
+    @media (min-width: 640px) {
+      footer { grid-template-columns: 1fr 1fr 1fr; align-items: start; }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <section class="hero">
+      <div class="wrap" style="display:grid;place-items:center;width:100%">
+        <div class="label">
+          <p class="wordmark" aria-hidden="true">boochslut</p>
+          <h1 class="tagline">booch that gets around</h1>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap about">
+      <div class="about-photo">
+        <img src="img/bottles.jpg" alt="A bottle of boochslut Bloomdrunk kombucha in front of a four-pack carrier">
+      </div>
+      <div class="about-copy">
+        <p><strong>boochslut</strong> is small-batch kombucha, brewed on Twin Peaks with premium green and oolong tea</p>
+        <p>Infused with florals, herbs, and succulent fruit to seduce your palate</p>
+        <p class="kicker">Give into desire, be a boochslut</p>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <div class="signup">
+        <div>
+          <h2>join for the latest booch drops</h2>
+          <img class="arrow" src="img/arrow.png" alt="">
+        </div>
+
+        <form id="signup" novalidate>
+          <div class="row">
+            <label>First Name
+              <input type="text" name="firstName" autocomplete="given-name" required>
+            </label>
+            <label>Last Name
+              <input type="text" name="lastName" autocomplete="family-name" required>
+            </label>
+          </div>
+          <label>Email
+            <input type="email" name="email" autocomplete="email" inputmode="email" required>
+          </label>
+          <label class="check">
+            <input type="checkbox" name="optIn" value="yes">
+            <span>Sign up for news and updates
+              <small>Actually check this, otherwise I’m not legally allowed to email you :(((((</small>
+            </span>
+          </label>
+          <div class="hp" aria-hidden="true">
+            <input type="text" name="website" tabindex="-1" autocomplete="off">
+          </div>
+          <button type="submit">Send</button>
+          <p class="status" id="status" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <p class="wordmark" style="font-size:1.6rem">boochslut</p>
+    <div>
+      <h3>Location</h3>
+      <p>49 Twin Peaks Blvd<br>San Francisco, CA</p>
+    </div>
+    <div>
+      <h3>Contact</h3>
+      <p><a href="mailto:benj@boochslut.com">benj@boochslut.com</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Google Apps Script web app URL that stores signups in a Google Sheet.
+    // Leave empty to test the page without saving anything.
+    const SIGNUP_URL = "";
+
+    const form = document.getElementById("signup");
+    const status = document.getElementById("status");
+    const button = form.querySelector("button");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      status.className = "status";
+      status.textContent = "";
+
+      const data = Object.fromEntries(new FormData(form));
+      for (const name of ["firstName", "lastName", "email"]) {
+        const input = form.elements[name];
+        if (!input.value.trim() || !input.checkValidity()) {
+          status.className = "status error";
+          status.textContent = name === "email" ? "Please enter a valid email." : "Please add your first and last name.";
+          input.focus();
+          return;
+        }
+      }
+      data.optIn = form.elements.optIn.checked ? "yes" : "no";
+
+      button.disabled = true;
+      button.textContent = "Sending…";
+      try {
+        if (SIGNUP_URL) {
+          // text/plain avoids a CORS preflight, which Apps Script can't answer.
+          const res = await fetch(SIGNUP_URL, {
+            method: "POST",
+            headers: { "Content-Type": "text/plain;charset=utf-8" },
+            body: JSON.stringify(data)
+          });
+          const result = await res.json();
+          if (!result.ok) throw new Error(result.error || "Something went wrong.");
+        } else if (location.hostname === "localhost") {
+          await new Promise((r) => setTimeout(r, 400));
+        } else {
+          throw new Error("Signups aren't connected yet.");
+        }
+        form.reset();
+        status.textContent = "Thanks! You're on the list.";
+      } catch (err) {
+        status.className = "status error";
+        status.textContent = SIGNUP_URL ? "That didn't go through. Please try again." : err.message;
+      } finally {
+        button.disabled = false;
+        button.textContent = "Send";
+      }
+    });
+  </script>
+</body>
+</html>
