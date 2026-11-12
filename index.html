@@ -7,278 +7,270 @@
   <meta name="description" content="boochslut is small-batch kombucha, brewed on Twin Peaks with premium green and oolong tea.">
   <meta property="og:title" content="boochslut · booch that gets around">
   <meta property="og:description" content="Small-batch kombucha, brewed on Twin Peaks with premium green and oolong tea.">
-  <meta property="og:image" content="img/bottles.jpg">
+  <meta property="og:image" content="https://boochslut.com/img/bottles.jpg">
   <meta name="theme-color" content="#9da68e">
   <link rel="icon" href="img/icon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Pontano+Sans:wght@400;600&family=Tenor+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.typekit.net/kqp5vxe.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    /* The background is the actual label color. The page always uses it,
-       in light and dark mode, because it's the brand. */
+    /* The sage is the real label color, so it stays in light and dark mode. */
     :root {
       --label: #9da68e;
-      --label-light: #b4bca5;
-      --ink: #011c27;
-      --ink-soft: #2c3e3f;
-      --vine: #1d5a1f;
-      --paper: #e9ecdf;
-      --error: #7a1212;
-      --serif: "Tenor Sans", "Optima", "Candara", sans-serif;
-      --sans: "Pontano Sans", "Helvetica Neue", Arial, sans-serif;
+      --ink: #0f1412;
+      --line: rgba(15, 20, 18, .9);
+      /* IvyMode is the label typeface (Adobe Fonts kit kqp5vxe, light 200 only). */
+      --ivy: "ivymode", "Didot", "Bodoni 72", Georgia, serif;
+      --display: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+      --mono: "IBM Plex Mono", "SFMono-Regular", Menlo, monospace;
       color-scheme: light;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
 
+    html { -webkit-text-size-adjust: 100%; }
+
     body {
       margin: 0;
       background: var(--label);
       color: var(--ink);
-      font-family: var(--sans);
+      font-family: var(--display);
       font-size: 18px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
+      line-height: 1.45;
+      overflow-x: hidden;
     }
 
     img { display: block; max-width: 100%; }
 
-    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+    .wrap { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 16px; }
+    @media (min-width: 720px) { .wrap { padding: 0 32px; } }
 
-    /* ---------- Label hero ---------- */
-
-    .hero {
-      min-height: min(70vh, 760px);
-      display: grid;
-      place-items: center;
-      padding: 48px 0;
+    .mono {
+      font-family: var(--mono);
+      font-size: .78rem;
+      letter-spacing: .02em;
+      line-height: 1.5;
     }
 
-    .label {
-      text-align: center;
-      padding: 40px 24px 36px;
-      border-top: 1.5px solid var(--ink);
-      border-bottom: 1.5px solid var(--ink);
-      position: relative;
-      width: min(100%, 820px);
-    }
+    /* ---------- Name ---------- */
 
-    /* Double rule, like the printed label */
-    .label::before, .label::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: var(--ink);
-      opacity: .55;
+    .name {
+      padding-top: 14px;
+      border-bottom: 1.5px solid var(--line);
+      overflow: hidden;
     }
-    .label::before { top: 6px; }
-    .label::after { bottom: 6px; }
 
     .wordmark {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: clamp(3.4rem, 15vw, 8.5rem);
-      line-height: 1;
-      letter-spacing: -0.01em;
       margin: 0;
-    }
-
-    .tagline {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      justify-content: center;
-      margin: 18px 0 0;
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: clamp(.95rem, 4.2vw, 1.6rem);
-      letter-spacing: .04em;
+      font-family: var(--ivy);
+      font-weight: 200;
+      font-size: 24vw; /* fitWordmark() fine-tunes this to the exact width */
+      line-height: .92;
+      letter-spacing: -0.02em;
       white-space: nowrap;
+      display: inline-block;
+      padding-bottom: .05em;
     }
 
-    .tagline::before, .tagline::after {
-      content: "";
-      flex: 0 1 72px;
-      min-width: 16px;
-      height: 1px;
-      background: currentColor;
-      opacity: .6;
-    }
+    /* ---------- Intro ---------- */
 
-    /* ---------- About ---------- */
-
-    .about {
+    .intro {
       display: grid;
-      gap: 32px;
-      align-items: center;
-      padding: 24px 0 72px;
+      gap: 24px;
+      padding-top: 20px;
+      padding-bottom: 64px;
     }
 
-    .about-photo {
-      border-radius: 6px;
+    .intro h1 {
+      margin: 0;
+      font-family: var(--ivy);
+      font-weight: 200;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .photo {
+      margin: 0 -16px;
+      aspect-ratio: 4 / 5;
       overflow: hidden;
-      box-shadow: 0 18px 40px rgba(1, 28, 39, .22);
-      max-width: 420px;
+    }
+
+    .photo img {
       width: 100%;
-      justify-self: center;
-      aspect-ratio: 3 / 4;
+      height: 100%;
+      object-fit: cover;
+      object-position: 65% 70%;
     }
 
-    .about-photo img { width: 100%; height: 100%; object-fit: cover; }
-
-    .about-copy p {
-      font-size: clamp(1.15rem, 2.6vw, 1.45rem);
-      line-height: 1.5;
-      margin: 0 0 .9em;
-      max-width: 26em;
+    .copy p {
+      margin: 0 0 1em;
+      max-width: 24em;
+      font-family: var(--mono);
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+      line-height: 1.55;
     }
 
-    .about-copy strong { font-weight: 600; }
-
-    .about-copy .kicker {
-      font-family: var(--serif);
-      font-size: clamp(1.5rem, 4vw, 2.1rem);
-      line-height: 1.25;
-      margin-top: 1.2em;
-      margin-bottom: 0;
+    @media (min-width: 900px) {
+      .intro {
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 32px;
+        padding-top: 24px;
+        padding-bottom: 120px;
+        align-items: start;
+      }
+      .intro h1 { grid-column: 1; }
+      .photo { grid-column: 2 / 4; grid-row: 1 / 3; margin: 0; aspect-ratio: 5 / 4; }
+      .copy { grid-column: 1; grid-row: 2; align-self: end; }
     }
 
-    @media (min-width: 800px) {
-      .hero { min-height: min(88vh, 760px); }
-      .about { grid-template-columns: 1fr 1.1fr; gap: 64px; padding: 40px 0 96px; }
+    /* ---------- The line ---------- */
+
+    .line {
+      border-top: 1.5px solid var(--line);
+      padding-top: 18px;
+      padding-bottom: 72px;
     }
+
+    .line p {
+      margin: 0;
+      font-family: var(--ivy);
+      font-weight: 200;
+      font-size: clamp(3.4rem, 12vw, 10rem);
+      line-height: .92;
+      letter-spacing: -0.025em;
+    }
+
+    @media (min-width: 900px) { .line { padding-bottom: 120px; } }
 
     /* ---------- Signup ---------- */
 
     .signup {
-      background: var(--paper);
-      border-radius: 10px;
-      padding: 32px 20px;
-      margin-bottom: 64px;
+      border-top: 1.5px solid var(--line);
+      padding-top: 18px;
+      padding-bottom: 80px;
       display: grid;
-      gap: 24px;
-      box-shadow: 0 1px 0 rgba(1, 28, 39, .08);
+      gap: 28px;
+    }
+
+    @media (min-width: 900px) {
+      .signup { grid-template-columns: 1fr 2fr; gap: 32px; padding-bottom: 120px; }
     }
 
     .signup h2 {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: clamp(2rem, 6vw, 3rem);
-      line-height: 1.1;
       margin: 0;
+      font-family: var(--ivy);
+      font-weight: 200;
+      font-size: clamp(2.2rem, 4.6vw, 3.2rem);
+      line-height: 1;
+      letter-spacing: -0.01em;
+      max-width: 9em;
     }
 
+    form { display: grid; gap: 22px; }
+    .row { display: grid; gap: 22px; }
+    @media (min-width: 560px) { .row { grid-template-columns: 1fr 1fr; } }
 
-    form { display: grid; gap: 16px; }
-
-    .row { display: grid; gap: 16px; }
-
-    @media (min-width: 560px) {
-      .row { grid-template-columns: 1fr 1fr; }
-    }
-
-    label { display: grid; gap: 6px; font-size: .95rem; font-weight: 600; }
+    label { display: grid; gap: 2px; }
 
     input[type=text], input[type=email] {
       width: 100%;
-      min-height: 50px;
-      padding: 12px 16px;
-      border: 1.5px solid var(--ink);
-      border-radius: 999px;
+      padding: 6px 0 10px;
+      border: 0;
+      border-bottom: 1.5px solid var(--line);
+      border-radius: 0;
       background: transparent;
       color: var(--ink);
-      font: 400 1rem var(--sans);
+      font: 200 1.7rem/1.2 var(--ivy);
+      letter-spacing: 0;
     }
 
-    input:focus-visible, button:focus-visible {
-      outline: 3px solid var(--vine);
-      outline-offset: 2px;
-    }
-
+    input:focus { outline: none; border-bottom-width: 3px; padding-bottom: 8.5px; }
 
     button {
       justify-self: start;
-      min-height: 52px;
-      padding: 12px 36px;
+      padding: 14px 28px;
       border: 0;
-      border-radius: 999px;
+      border-radius: 0;
       background: var(--ink);
-      color: var(--paper);
-      font: 600 1rem var(--sans);
-      letter-spacing: .08em;
-      text-transform: uppercase;
+      color: var(--label);
+      font: 600 1rem var(--display);
+      letter-spacing: .02em;
       cursor: pointer;
     }
 
+    button:hover { background: #000; }
+    button:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
     button[disabled] { opacity: .6; cursor: progress; }
 
-    .status { margin: 0; font-weight: 600; min-height: 1.6em; }
-    .status.error { color: var(--error); }
+    .status { margin: 0; min-height: 1.5em; }
+    .status.error { font-weight: 500; }
 
     .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
-
-    @media (min-width: 800px) {
-      .signup { grid-template-columns: 1fr 1.4fr; padding: 48px; gap: 48px; }
-    }
-
   </style>
 </head>
 <body>
 
+  <header class="wrap name">
+    <p class="wordmark">boochslut</p>
+  </header>
+
   <main>
-    <section class="hero">
-      <div class="wrap" style="display:grid;place-items:center;width:100%">
-        <div class="label">
-          <p class="wordmark" aria-hidden="true">boochslut</p>
-          <h1 class="tagline">booch that gets around</h1>
-        </div>
-      </div>
-    </section>
-
-    <section class="wrap about">
-      <div class="about-photo">
-        <img src="img/bottles.jpg" alt="A bottle of boochslut Bloomdrunk kombucha in front of a four-pack carrier">
-      </div>
-      <div class="about-copy">
-        <p><strong>boochslut</strong> is small-batch kombucha, brewed on Twin Peaks with premium green and oolong tea</p>
+    <section class="wrap intro">
+      <h1>booch that gets around</h1>
+      <figure class="photo" style="margin-block:0">
+        <img src="img/bottles.jpg" alt="A bottle of boochslut Bloomdrunk kombucha in front of a four-pack carrier" fetchpriority="high">
+      </figure>
+      <div class="copy">
+        <p>boochslut is small-batch kombucha, brewed on Twin Peaks with premium green and oolong tea</p>
         <p>Infused with florals, herbs, and succulent fruit to seduce your palate</p>
-        <p class="kicker">Give into desire, be a boochslut</p>
       </div>
     </section>
 
-    <section class="wrap">
-      <div class="signup">
-        <h2>join for the latest booch drops</h2>
+    <section class="wrap line">
+      <p>Give into desire, be a boochslut</p>
+    </section>
 
-        <form id="signup" novalidate>
-          <div class="row">
-            <label>First Name
-              <input type="text" name="firstName" autocomplete="given-name" required>
-            </label>
-            <label>Last Name
-              <input type="text" name="lastName" autocomplete="family-name" required>
-            </label>
-          </div>
-          <label>Email
-            <input type="email" name="email" autocomplete="email" inputmode="email" required>
+    <section class="wrap signup" id="join">
+      <h2>join for the latest booch drops</h2>
+
+      <form id="signup" novalidate>
+        <div class="row">
+          <label><span class="mono">First Name</span>
+            <input type="text" name="firstName" autocomplete="given-name" required>
           </label>
-          <div class="hp" aria-hidden="true">
-            <input type="text" name="website" tabindex="-1" autocomplete="off">
-          </div>
-          <button type="submit">Send</button>
-          <p class="status" id="status" role="status"></p>
-        </form>
-      </div>
+          <label><span class="mono">Last Name</span>
+            <input type="text" name="lastName" autocomplete="family-name" required>
+          </label>
+        </div>
+        <label><span class="mono">Email</span>
+          <input type="email" name="email" autocomplete="email" inputmode="email" required>
+        </label>
+        <div class="hp" aria-hidden="true">
+          <input type="text" name="website" tabindex="-1" autocomplete="off">
+        </div>
+        <button type="submit">Send</button>
+        <p class="status mono" id="status" role="status"></p>
+      </form>
     </section>
   </main>
 
-
   <script>
+    // Make "boochslut" run exactly edge to edge at any screen width.
+    function fitWordmark() {
+      const el = document.querySelector(".wordmark");
+      const target = el.parentElement.clientWidth -
+        parseFloat(getComputedStyle(el.parentElement).paddingLeft) * 2;
+      el.style.fontSize = "100px";
+      el.style.fontSize = (100 * target / el.getBoundingClientRect().width) + "px";
+    }
+    document.fonts.ready.then(fitWordmark);
+    addEventListener("resize", fitWordmark);
+
     // Google Apps Script web app URL that stores signups in a Google Sheet.
     // Leave empty to test the page without saving anything.
-    const SIGNUP_URL = "";
+    const SIGNUP_URL = "https://script.google.com/macros/s/AKfycbxnXeqPlyhc8R4BnMd-qyhbSMcAC-3Z0iBuS3n5M0l6xSEt4s_b2oGII2msucgTpDuU/exec";
 
     const form = document.getElementById("signup");
     const status = document.getElementById("status");
@@ -286,14 +278,14 @@
 
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      status.className = "status";
+      status.className = "status mono";
       status.textContent = "";
 
       const data = Object.fromEntries(new FormData(form));
       for (const name of ["firstName", "lastName", "email"]) {
         const input = form.elements[name];
         if (!input.value.trim() || !input.checkValidity()) {
-          status.className = "status error";
+          status.className = "status mono error";
           status.textContent = name === "email" ? "Please enter a valid email." : "Please add your first and last name.";
           input.focus();
           return;
@@ -320,7 +312,7 @@
         form.reset();
         status.textContent = "Thanks! You're on the list.";
       } catch (err) {
-        status.className = "status error";
+        status.className = "status mono error";
         status.textContent = SIGNUP_URL ? "That didn't go through. Please try again." : err.message;
       } finally {
         button.disabled = false;
